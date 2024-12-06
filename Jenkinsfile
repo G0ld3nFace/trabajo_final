@@ -12,13 +12,12 @@ pipeline {
                 stages {
                     stage('Instalar dependencias') {
                         steps {
-                            echo 'Instalar dependencias'
                             sh 'npm install'
                         }
                     }
-                    stage('Testing') {
+                    stage('Ejecucion de pruebas') {
                         steps {
-                            echo 'npm run test'
+                            sh 'npm run test'
                         }
                     }
                     stage('Build') {
