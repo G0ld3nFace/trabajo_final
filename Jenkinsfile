@@ -48,8 +48,12 @@ pipeline {
             }
             stage('Upload de imagen al registry de nexus actualizada con tag latest') {
                 steps {
-                    sh 'docker tag backend-devops:latest localhost:8082/backend-devops:latest'
-                    sh 'docker push localhost:8082/backend-devops:latest'
+                    script {
+                        docker.withRegistry('localhost:8082', 'registry') {
+                            sh 'docker tag backend-devops:latest localhost:8082/backend-devops:latest'
+                            sh 'docker push localhost:8082/backend-devops:latest'
+                        }
+                    }                    
                 }
             }
             stage('Upload de imagen al registry de nexus actualizada con tag igual a build number de jenkins') {
