@@ -4,7 +4,7 @@ pipeline {
             stage('Instalar dependencias') {
                 agent {
                     docker {
-                        image: 'node:22-alpine'
+                        image 'node:22-alpine'
                         reuseNodess true
                     }
                 }
