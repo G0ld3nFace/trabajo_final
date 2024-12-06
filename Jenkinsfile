@@ -49,7 +49,7 @@ pipeline {
             stage('Upload de imagen al registry de nexus actualizada con tag latest') {
                 steps {
                     script {
-                        docker.withRegistry('localhost:8082', 'registry') {
+                        docker.withRegistry('http://localhost:8082', 'registry') {
                             sh 'docker tag backend-devops:latest localhost:8082/backend-devops:latest'
                             sh 'docker push localhost:8082/backend-devops:latest'
                         }
