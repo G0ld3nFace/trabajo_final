@@ -43,12 +43,12 @@ pipeline {
             }
             stage('Construcción de imagen docker') {
                 steps {
-                    echo 'Construcción de imagen docker'
+                    sh 'docker build -t backend-devops .'
                 }
             }
             stage('Upload de imagen al registry de nexus actualizada con tag latest') {
                 steps {
-                    echo 'Upload de imagen al registry de nexus actualizada con tag latest'
+                    sh 'sudo docker push localhost:8082/backend-devops'
                 }
             }
             stage('Upload de imagen al registry de nexus actualizada con tag igual a build number de jenkins') {
