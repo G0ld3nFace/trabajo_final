@@ -48,7 +48,7 @@ pipeline {
             }
             stage('Upload de imagen al registry de nexus actualizada con tag latest') {
                 steps {
-                    sh 'sudo docker push localhost:8082/backend-devops'
+                    sh 'docker push localhost:8082/backend-devops'
                 }
             }
             stage('Upload de imagen al registry de nexus actualizada con tag igual a build number de jenkins') {
