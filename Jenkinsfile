@@ -1,5 +1,8 @@
 pipeline {
     agent any 
+    environment {
+        USERNAME = 'Pedro Obreque Roa'
+    }
         stages {
             stage('Instalar dependencias') {
                 agent {
