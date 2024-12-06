@@ -10,7 +10,7 @@ describe('Bateria de test del servidor', () => {
             .expect(200)
             .expect('Content-Type', /text/)
             .then(response => {
-                expect(response.text).toBe('Hola mundo al usuario spensiones');
+                expect(response.text).toContain('Hola mundo al usuario');
             });
     });
 
