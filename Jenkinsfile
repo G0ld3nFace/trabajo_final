@@ -1,42 +1,42 @@
 pipeline {
     agent any 
         stages {
-            stage("A") {
+            stage("Instalar dependencias") {
                 steps {
                     echo "Instalar dependencias"
                 }
             }
-            stage("B") {
+            stage("Testing") {
                 steps {
                     echo "Testing"
                 }
             }
-            stage("C") {
+            stage("Build") {
                 steps {
                     echo "Build"
                 }
             }
-            stage("D") {
+            stage("Upload de Informe a sonarqube de calidad") {
                 steps {
                     echo "Upload de Informe a sonarqube de calidad"
                 }
             }
-            stage("E") {
+            stage("Validación de puerta de calidad con sonarqube") {
                 steps {
                     echo "Validación de puerta de calidad con sonarqube"
                 }
             }
-            stage("F") {
+            stage("Construcción de imagen docker") {
                 steps {
                     echo "Construcción de imagen docker"
                 }
             }
-            stage("G") {
+            stage("Upload de imagen al registry de nexus actualizada con tag latest") {
                 steps {
                     echo "Upload de imagen al registry de nexus actualizada con tag latest"
                 }
             }
-            stage("H") {
+            stage("Upload de imagen al registry de nexus actualizada con tag igual a build number de jenkins") {
                 steps {
                     echo "Upload de imagen al registry de nexus actualizada con tag igual a build number de jenkins"
                 }
