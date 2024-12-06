@@ -20,7 +20,7 @@ describe('Bateria de test del servidor', () => {
             .expect(200)
             .expect('Content-Type', /text/)
             .then(response => {
-                expect(response.text).toBe('la apikey de mi aplicacion es: default-key');
+                expect(response.text).toBe('la apikey de mi aplicacion es: Alohomora');
             });
     });
 

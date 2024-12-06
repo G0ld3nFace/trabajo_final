@@ -2,6 +2,7 @@ pipeline {
     agent any 
     environment {
         USERNAME = 'Pedro Obreque Roa'
+        APIKEY = 'Alohomora'
     }
         stages {
             stage('Instalar dependencias') {
