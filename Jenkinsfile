@@ -39,7 +39,7 @@ pipeline {
             stage('Validación de puerta de calidad con sonarqube') {
                 agent {
                     docker {
-                        label 'contenerdor sonar-scanner'
+                        label 'contenedores'
                         image 'sonarsource/sonar-scanner-cli'
                         reuseNode true
                     }
