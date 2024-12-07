@@ -37,8 +37,19 @@ pipeline {
                 }
             }
             stage('Validación de puerta de calidad con sonarqube') {
-                steps {
-                    echo 'Validación de puerta de calidad con sonarqube'
+                agent {
+                    docker {
+                        label 'contenerdor sonar-scanner'
+                        image 'sonarsource/sonar-scanner-cli'
+                        reuseNode true
+                    }
+                }
+                stages {
+                    stage('Ejecutar sonar-scanner - sonarqube') {
+                        withSonarQubeEnv('sonarqube') {
+                            sh 'sonar-scanner'
+                        }
+                    }
                 }
             }
             stage('Construcción de imagen docker') {
@@ -58,7 +69,11 @@ pipeline {
             }
             stage('Upload de imagen al registry de nexus actualizada con tag igual a build number de jenkins') {
                 steps {
-                    echo 'Upload de imagen al registry de nexus actualizada con tag igual a build number de jenkins'
+                     script {
+                        docker.withRegistry('http://localhost:8082', 'registry') {
+                           echo 'pass'
+                        }
+                    } 
                 }
             }
         }
