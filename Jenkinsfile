@@ -46,11 +46,22 @@ pipeline {
                     }
                 }
                 stages {
-                    stage('Ejecutar sonar-scanner - sonarqube') {
+                    stage('QA - sonar-scanner') {
                         steps {
                             withSonarQubeEnv('sonarqube') {
                                 sh 'sonar-scanner'
                             }
+                        }                        
+                    }
+                    stage('QA - puerta calidad') {
+                        steps {
+                            timeout(time:1, unit:'MINUTES') {
+                                def qg = WaitForQualityGate()
+                                if(qg.status != 'OK') {
+                                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                                }
+                            }
+                            
                         }                        
                     }
                 }
