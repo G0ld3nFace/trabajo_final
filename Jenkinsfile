@@ -87,7 +87,7 @@ pipeline {
                      script {
                         def version = "${BUILD_NUMBER}"
                         docker.withRegistry('http://localhost:8082', 'registry') {
-                            sh """docker tag backend-devops:${version} localhost:8082/backend-devops:${version}"""
+                            sh """docker tag backend-devops:latest localhost:8082/backend-devops:${version}"""
                             sh """docker push localhost:8082/backend-devops:${version}"""
                         }
                     } 
