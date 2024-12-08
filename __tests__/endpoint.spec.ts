@@ -34,6 +34,27 @@ describe('Bateria de test del servidor', () => {
             });
     });
 
+    test('servidor en endpoint /validar-rut [rut con puntos valido]', async () => {
+        return await request(app)
+            .get('/validar-rut?rut=33.333.333-3')
+            .expect(200)
+            .expect('Content-Type', /text/)
+            .then(response => {
+                expect(response.text).toBe('El rut suministrado (33.333.333-3) es : valido');
+            });
+    });
+
+    test('servidor en endpoint /validar-rut [rut con puntos invalido]', async () => {
+        return await request(app)
+            .get('/validar-rut?rut=33.333.333-2')
+            .expect(200)
+            .expect('Content-Type', /text/)
+            .then(response => {
+                expect(response.text).toBe('El rut suministrado (33.333.333-2) es : invalido');
+            });
+    });
+    
+
     test('servidor en endpoint /validar-rut [valido sin guion]', async () => {
         return await request(app)
             .get('/validar-rut?rut=333333333')

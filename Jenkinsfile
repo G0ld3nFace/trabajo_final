@@ -46,7 +46,7 @@ pipeline {
                     }
                 }
                 stages {
-                    stage('QA - Ejecucion sonar-scanner') {
+                    stage('QA - Ejecucion sonar-scanner (subida prueba de covertura)') {
                         steps {
                             withSonarQubeEnv('sonarqube') {
                                 sh 'sonar-scanner'
